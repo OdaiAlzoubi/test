@@ -1,9 +1,10 @@
 # 1) Use official PHP image
 FROM php:8.2-fpm
 
-# 2) Install system dependencies
+# 2) Install system dependencies + PostgreSQL client libraries
 RUN apt-get update && apt-get install -y \
     git curl libpng-dev libjpeg-dev libfreetype6-dev zip unzip \
+    libpq-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
 
